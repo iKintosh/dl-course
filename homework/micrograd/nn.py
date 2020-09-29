@@ -60,10 +60,11 @@ class ReLU(Module):
     """The most simple and popular activation function"""
 
     def forward(self, inp: Tensor):
-        # Create ReLU Module
-        for value in inp.parameters():
-            value.relu()
-        return inp
+        data = []
+        for value in inp.data.flatten():
+            data.append(value.relu())
+        tensor = Tensor(data).reshape(inp.shape())
+        return tensor
 
 
 class CrossEntropyLoss(Module):
