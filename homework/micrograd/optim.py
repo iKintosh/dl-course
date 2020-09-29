@@ -5,7 +5,8 @@ class SGD:
 
     def step(self):
         """Applying gradient descent to parameters"""
-        # Implement SGD!
+        for i, parameter in enumerate(self.parameters):
+            self.parameters[i].data -= self.parameters[i].grad*self.lr
 
     def zero_grad(self):
         """Resetting gradient for all parameters (set gradient to zero)"""
